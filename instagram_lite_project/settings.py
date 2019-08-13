@@ -62,7 +62,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'pinterest_lite_project.urls'
+ROOT_URLCONF = 'instagram_lite_project.urls'
 
 TEMPLATES = [
     {
@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pinterest_lite_project.wsgi.application'
+WSGI_APPLICATION = 'instagram_lite_project.wsgi.application'
 
 
 # Database

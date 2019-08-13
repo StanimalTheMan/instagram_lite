@@ -5,8 +5,8 @@
 
 
 {% block content %}
-<h1>Pinterest Lite Home</h1>
-<img class="pinterest" src="{% static 'images/pinterest-2151052_1920.png' %}">
+<h1>Instagram Lite Home</h1>
+<img class="instagram" src="{% static 'images/instagram_lite.png' %}">
 {% if user.is_authenticated %}
     Hi {{ user.email }}!
     <p><a href="{% url 'account_logout' %}">Log Out</a></p>
