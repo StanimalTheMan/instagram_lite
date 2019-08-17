@@ -1,5 +1,11 @@
 {% extends '_base.html' %}
+{% load static %}
+
+{% block head %}<link rel="stylesheet" href="{% static 'css/view_profile.css' %}">{% endblock head %}
 
 {% block content %}
-<h1>{{user.username}}</h1>
+{% for post in user.posts.all %}
+    <a href="{{ post.get_absolute_url }}"><img class="post" src="{{ post.picture.url }}" alt="{{ post.title }}"></a>
+    <!--<img class="post" src="{{ post.picture.url }}" alt="{{ post.title }}">-->
+{% endfor %}
 {% endblock content %}

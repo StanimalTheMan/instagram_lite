@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 
 
 from .forms import CustomUserCreationForm
@@ -12,6 +13,7 @@ class SignupPageView(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
 
+@login_required
 def view_profile(request, username):
     profile = None
     CustomUser = get_user_model()

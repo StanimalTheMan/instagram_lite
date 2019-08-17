@@ -8,8 +8,8 @@
 <h1>Instagram Lite Home</h1>
 <img class="instagram" src="{% static 'images/instagram_lite.png' %}">
 {% if user.is_authenticated %}
-    Hi {{ user.email }}!
-    <p><a href="{% url 'account_logout' %}">Log Out</a></p>
+    Hi {{ user.username }}!
+    <!--<p><a href="{% url 'account_logout' %}">Log Out</a></p>-->
 {% else %}
     <p>You are not logged in</p>
     <a href="{% url 'account_login' %}">Log In</a>
