@@ -9,4 +9,4 @@ After the user uploads an image, he is redirected to his homepage that displays 
 
 ## Post detail
 After clicking on an image on one's profile, one gets referred to a page with the post's uuid and post details.
-![Sample Post Detail](/static/images/post-detail.png)
+![Sample Post Detail](/static/images/post_detail.png)
