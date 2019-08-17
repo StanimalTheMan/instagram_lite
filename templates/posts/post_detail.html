@@ -1,5 +1,5 @@
 {% extends '_base.html' %}
-
+{% load static %}
 
 {% block title %}{{ post.title }}{% endblock title %}
 
@@ -10,5 +10,7 @@
     <p><img class="post" src="{{ post.picture.url }}" alt="{{ post.title }}"></p>
     <p>by: {{ post.author }}</p>
     <p>uploaded: {{ post.date }}</p>
+    <button class="btn btn-secondary" type="submit"><a class="edit" href="{% url 'post_edit' post.pk %}">Edit Post</a></button>
+    <button class="btn btn-danger" type="submit"><a class="delete" href="{% url 'post_delete' post.pk %}">Delete Post</a></button>
 </div>
 {% endblock content %}
