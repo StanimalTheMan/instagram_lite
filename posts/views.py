@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, Http404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView
@@ -38,6 +38,12 @@ class PostUpdateView(UpdateView):
     fields = ('title', 'picture',)
     template_name = 'posts/post_edit.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        op = self.get_object()
+        if op.author != self.request.user:
+            raise Http404("You are not allowed to edit this Post")
+        return super(PostUpdateView, self).dispatch(request, *args, **kwargs)
+
 class PostDeleteView(DeleteView):
     model = Post
     template_name = 'posts/post_delete.html'
@@ -51,6 +57,12 @@ class PostDeleteView(DeleteView):
         obj.author = self.request.user
         obj.save()
         return HttpResponseRedirect(self.get_success_url())
+
+    def dispatch(self, request, *args, **kwargs):
+        op = self.get_object()
+        if op.author != self.request.user:
+            raise Http404("You are not allowed to delete this Post")
+        return super(PostDeleteView, self).dispatch(request, *args, **kwargs)
 
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)

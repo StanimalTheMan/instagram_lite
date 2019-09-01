@@ -6,20 +6,28 @@
 
 {% block content %}
 <div class="post-detail">
-    <h2>{{ post.title }}</h2>
-    <p><img class="post" src="{{ post.picture.url }}" alt="{{ post.title }}"></p>
-    <p>by: {{ post.author }}</p>
-    <p>uploaded: {{ post.date }}</p>
-    {% for comment in post.comments.all %}
-        <div class="comment">
-            <strong>{{ comment.author }}</strong><p>{{ comment.comment|linebreaks }}</p>
-            <div class="date">{{ comment.date }}</div>
+    <div class="flex-container">
+        <div class="post-div">
+            <h2>{{ post.title }}</h2>
+            <p><img class="post" src="{{ post.picture.url }}" alt="{{ post.title }}"></p>
+            <p>by: <strong>{{ post.author }}</strong></p>
+            <p>uploaded: {{ post.date }}</p>
         </div>
-    {% empty %}
-        <p>No comments here yet :(</p>
-    {% endfor %}
-    <a class="btn btn-secondary" href="{% url 'add_comment_to_post' pk=post.pk %}">Add Comment</a>
-    <button class="btn btn-secondary" type="submit"><a class="edit" href="{% url 'post_edit' post.pk %}">Edit Post</a></button>
-    <button class="btn btn-danger" type="submit"><a class="delete" href="{% url 'post_delete' post.pk %}">Delete Post</a></button>
+        <div class="comments-div">
+            {% for comment in post.comments.all %}
+                <div class="comment">
+                    <strong>{{ comment.author }}</strong><p>{{ comment.comment|linebreaks }}</p>
+                    <div class="date">{{ comment.date }}</div>
+                </div>
+            {% empty %}
+                <p>No comments here yet :(</p>
+            {% endfor %}
+            <a class="btn btn-secondary" href="{% url 'add_comment_to_post' pk=post.pk %}">Add Comment</a>
+            {% if post.author == user %}
+                <button class="btn btn-secondary" type="submit"><a class="edit" href="{% url 'post_edit' post.pk %}">Edit Post</a></button>
+                <button class="btn btn-danger" type="submit"><a class="delete" href="{% url 'post_delete' post.pk %}">Delete Post</a></button>
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock content %}

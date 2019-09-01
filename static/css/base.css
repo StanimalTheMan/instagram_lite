@@ -19,3 +19,15 @@ h1 {
 .delete {
     color: white;
 }
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.flex-container > * {
+    padding: 20px;
+    margin: 10px;
+}

@@ -19,3 +19,5 @@ Initial Post:
 Updated Post:
 ![After](/static/images/updated_pic.png)
 
+## A Profile with comments
+![Sample Post w/ Comments](/static/images/after_comment.png)
