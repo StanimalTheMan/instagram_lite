@@ -21,3 +21,7 @@ Updated Post:
 
 ## A Profile with comments
 ![Sample Post w/ Comments](/static/images/after_comment.png)
+
+## Ways to improve
+Currently in order to add a comment, another template is used.  AJAX using a JS framework like React, Vue, or JQuery is certainly better and under consideration.
+Followers, likes, and the other features of Instagram are also missing.
