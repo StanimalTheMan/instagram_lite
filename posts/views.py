@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse,reverse_lazy
 from django.http import HttpResponseRedirect
 
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 from .models import Post
 from users.models import CustomUser
 
@@ -51,3 +51,17 @@ class PostDeleteView(DeleteView):
         obj.author = self.request.user
         obj.save()
         return HttpResponseRedirect(self.get_success_url())
+
+def add_comment_to_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'posts/add_comment_to_post.html', {'form': form})

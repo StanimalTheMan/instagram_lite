@@ -156,6 +156,8 @@ AUTH_USER_MODEL = 'users.CustomUser'
 # LOGIN_REDIRECT_URL = 'home'
 ACCOUNT_LOGOUT_REDIRECT = 'home'
 
+# ACCOUNT_ADAPTER = 'users.adapter.AccountAdapter'
+
 # django-alluth config
 SITE_ID = 1
 

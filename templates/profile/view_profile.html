@@ -4,7 +4,7 @@
 {% block head %}<link rel="stylesheet" href="{% static 'css/view_profile.css' %}">{% endblock head %}
 
 {% block content %}
-{% for post in user.posts.all %}
+{% for post in profile.posts.all %}
     <a href="{{ post.get_absolute_url }}"><img class="post" src="{{ post.picture.url }}" alt="{{ post.title }}"></a>
     <!--<img class="post" src="{{ post.picture.url }}" alt="{{ post.title }}">-->
 {% endfor %}
